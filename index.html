@@ -2,11 +2,75 @@
 <html>
 
 <head>
-  <title>ALC</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-  <h1>Welcome to Alc3.0</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <div class="card mt-5">
+          <div class="card-header text-center bg-primary">
+            <h3 style="color:white">Currency Converter</h3>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <select name="" id="" class="form-control">
+                  <option value="">-- choose currency --</option>
+                </select>
+                <input type="number" name="" id="" placeholder="amount" class="form-control">
+              </div>
+              <br>
+              <div class="form-group">
+                <select name="" id="" class="form-control">
+                  <option value="">-- choose currency --</option>
+                </select>
+                <div id="output"></div>
+              </div>
+              <br>
+              <button class="btn btn-primary btn-block">Convert</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if ('ServiceWorker' in Navigator) {
+      Navigator.serviceWorker.register('./sw.js', {
+        scope: './'
+      }).then(reg => {
+        let serviceWorker;
+        if (reg.installing) {
+          serviceWorker = reg.installing;
+          console.log('Installing service workers');
+        } else if (registration.waiting) {
+          serviceWorker = registration.waiting;
+          console.log('waiting');
+        } else if (registration.active) {
+          serviceWorker = registration.active;
+          console.log('active');
+        }
+
+        if (serviceWorker) {
+
+        }
+
+      }).catch(err => {
+        console.log(`Registration failed with ${err}`);
+      });
+
+    } else {
+      // current broeser does not support servive worker
+    }
+  </script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
