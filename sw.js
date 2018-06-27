@@ -31,12 +31,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then( resp => {
-      return resp || fetch(event.request).then( response => {
-        return caches.open(staticName).then(function(cache) {
-          cache.put(event.request, response.clone());
-          return response;
-        });  
-      });
+      return resp || fetch(event.request)
     })
   );
 });
