@@ -46,7 +46,7 @@
   </div>
 
   <script>
-    if ('ServiceWorker' in Navigator) {
+    if ('serviceWorker' in Navigator) {
       Navigator.serviceWorker.register('./sw.js', {
         scope: './'
       }).then(reg => {
