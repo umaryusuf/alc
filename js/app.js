@@ -1,4 +1,4 @@
-(function() {
+window.addEventListener('DOMContentLoaded', function() {
 
   // Select elements from the dom
   const form = document.querySelector('#myForm');
@@ -25,8 +25,8 @@
         `;
       });
 
-      document.querySelector('#from').innerHTML = temp;
-      document.querySelector('#to').innerHTML = temp;
+      from.innerHTML = temp;
+      to.innerHTML = temp;
     })
     .catch(err => console.log(err));
 
@@ -60,7 +60,6 @@
 
             if(data) {
               let total;
-        
               total = (amount * data[from_to]);
               // = Math.round(total * 100) / 100;
 
@@ -87,7 +86,6 @@
         )
       }
     });
-   
   }
 
   btn.addEventListener('click', () => {
@@ -99,8 +97,7 @@
     } else {
       convertCurrency(parseInt(amount.value), from.value, to.value);
     }
-
   });
 
-})();
+});
 

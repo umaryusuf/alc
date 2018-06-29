@@ -8,25 +8,15 @@ self.addEventListener('install', event => {
         'css/styles.css',
         'js/app.js',
         'js/idb.js',
+        'favicon.ico',
+        'images/image128x128.png',
+        'images/image256x256.png',
+        'images/image512x512.png',
         'https://free.currencyconverterapi.com/api/v5/currencies'
       ]);
     })
   );
 });
-
-self.addEventListener('activate', event => {
-  event.waitUntill(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.filter(cacheName => {
-          return cacheName.startsWith('converter-') && cacheName !== staticName;
-        }).map(cacheName => {
-          caches.delete(cacheName)
-        })
-      )
-    })
-  )
-})
 
 self.addEventListener('fetch', event => {
   event.respondWith(
