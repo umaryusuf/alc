@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,17 +9,17 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="shortcut icon" href="favicon.ico" />
   <title>Currency Converter</title>
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
   <style>
+    body {
+      font-size: 16px;
+    }
     .container {
       width: 300px;
       margin: 0 auto;
     }
-
     .card {
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     }
-
     .card {
       position: relative;
       display: flex;
@@ -32,51 +31,41 @@
       border: 0 solid transparent;
       border-radius: 0.25rem;
     }
-
     .text-center {
       text-align: center !important;
     }
-
     .bg-primary {
       background-color: #2196F3 !important;
     }
-
     .card-header {
       padding: 0.75rem 1.25rem;
       margin-bottom: 0;
       background-color: rgba(0, 0, 0, 0.03);
       border-bottom: 0 solid transparent;
     }
-
     .card-body {
       flex: 1 1 auto;
       padding: 1.25rem;
     }
-
     .form-group {
       margin-bottom: 1rem;
     }
-
     label {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
-
     .text-danger {
       color: #e51c23 !important;
     }
-
     .btn:not(:disabled):not(.disabled) {
       cursor: pointer;
     }
-
     button,
     html [type="button"],
     [type="reset"],
     [type="submit"] {
       -webkit-appearance: button;
     }
-
     .btn {
       text-transform: uppercase;
       border: none;
@@ -95,28 +84,22 @@
       font-size: 0.8125rem;
       line-height: 1.5;
       border-radius: 0.25rem;
-
     }
-
     .btn-primary {
       position: relative;
     }
-
     .btn-block {
       display: block;
       width: 100%;
     }
-
     .btn-primary {
       color: #fff;
       background-color: #2196F3;
       border-color: #2196F3;
     }
-
     .mt-5 {
       margin-top: 30px;
     }
-
     input,
     select,
     textarea {
@@ -127,7 +110,6 @@
       background: #fff;
       width: 100%;
     }
-
     #output {
       padding: 10px 0;
       font-size: 25px;
@@ -137,7 +119,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <div class="card mt-5">
@@ -190,5 +171,4 @@
   <script src="js/idb.js" sync></script>
   <script src="js/app.js"></script>
 </body>
-
 </html>
