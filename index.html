@@ -10,48 +10,169 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="shortcut icon" href="favicon.ico" />
   <title>Currency Converter</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
+  <style>
+    .container {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .card {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0 solid transparent;
+      border-radius: 0.25rem;
+    }
+
+    .text-center {
+      text-align: center !important;
+    }
+
+    .bg-primary {
+      background-color: #2196F3 !important;
+    }
+
+    .card-header {
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 0;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-bottom: 0 solid transparent;
+    }
+
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-danger {
+      color: #e51c23 !important;
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
+
+    button,
+    html [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    .btn {
+      text-transform: uppercase;
+      border: none;
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      -webkit-transition: all 0.4s;
+      transition: all 0.4s;
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: 1rem 1rem;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+
+    }
+
+    .btn-primary {
+      position: relative;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #2196F3;
+      border-color: #2196F3;
+    }
+
+    .mt-5 {
+      margin-top: 30px;
+    }
+
+    input,
+    select,
+    textarea {
+      box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08) !important;
+      padding: 12px 18px;
+      border-radius: 0 !important;
+      border: 1px solid #dbdbdb;
+      background: #fff;
+      width: 100%;
+    }
+
+    #output {
+      padding: 10px 0;
+      font-size: 25px;
+      height: 30px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-4 mx-auto">
-        <div class="card mt-5">
-          <div class="card-header text-center bg-primary">
-            <h3 style="color:#fff">Currency Converter</h3>
+    <div class="card mt-5">
+      <div class="card-header text-center bg-primary">
+        <h3 style="color:#fff">Currency Converter</h3>
+      </div>
+      <div class="card-body">
+        <form id="myForm">
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" style="width: 222px !important" name="amount" id="amount" placeholder="amount" class="form-control"
+            />
+            <span id="error" class="text-danger"></span>
           </div>
-          <div class="card-body">
-            <form id="myForm">
-              <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" name="amount" id="amount" placeholder="amount" class="form-control">
-                <span id="error" class="text-danger"></span>
-              </div>
-              <div class="form-group">
-                <label for="from">From</label>
-                <select name="from" id="from" class="form-control">
-                  <option value=""> loading ....</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="to">To</label>
-                <select name="to" id="to" class="form-control">
-                  <option value=""> loading ...</option>
-                </select>
-                <div id="output"></div>
-              </div>
-              <br>
-              <button id="convert" type="button" class="btn btn-primary btn-block">Convert</button>
-            </form>
+          <div class="form-group">
+            <label for="from">From</label>
+            <select name="from" id="from" class="form-control">
+              <option value=""> loading ....</option>
+            </select>
           </div>
-        </div>
+          <div class="form-group">
+            <label for="to">To</label>
+            <select name="to" id="to" class="form-control">
+              <option value=""> loading ...</option>
+            </select>
+            <div id="output"></div>
+          </div>
+          <br>
+          <button id="convert" type="button" class="btn btn-primary btn-block">Convert</button>
+        </form>
       </div>
     </div>
   </div>
 
-  <script>
+  <script async>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js', {
         scope: './'
@@ -66,7 +187,7 @@
       // current broeser does not support servive worker
     }
   </script>
-  <script src="js/idb.js"></script>
+  <script src="js/idb.js" sync></script>
   <script src="js/app.js"></script>
 </body>
 

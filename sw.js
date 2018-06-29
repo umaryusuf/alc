@@ -4,8 +4,6 @@ self.addEventListener('install', event => {
     caches.open(staticName).then( cache => {
       return cache.addAll([
         'index.html',
-        'css/bootstrap.min.css',
-        'css/styles.css',
         'js/app.js',
         'js/idb.js',
         'favicon.ico',
